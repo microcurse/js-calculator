@@ -5,21 +5,35 @@ const buttons = document.querySelectorAll('button');
 let calScreen = document.getElementById('calculation');
 
 // listen for when any button is pressed
-let calInput = buttons.forEach(button => {
+let input = buttons.forEach(button => {
   button.addEventListener("click", function () {
-    collectInput(this.value);
+
+    // collect user input
+    let currInput = this.value;
+    
+    // output to screen
+    calScreen.innerHTML += currInput;
+
+    // do something with the input
+    if ( currInput === '+' ) {
+      add(currInput);
+    }
+
   });
 });
 
-// this is where we take the input from the calculator and do something with it
-function collectInput(input) {
-  switch (input) {
-    // clear all current inputs
-    case 'clear':
-      console.log('You hit the Clear button');
-      break;
-    case '=':
-      console.log('You hit the equals button');
-      break;
-  }
+function add(num) {
+  return num + num;
+}
+
+function subctract(num) {
+  return num - num;
+}
+
+function multiple(num) {
+  return num * num;
+}
+
+function divide(num) {
+  return num / num;
 }
