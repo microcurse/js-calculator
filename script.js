@@ -6,7 +6,7 @@ let calScreen = document.getElementById('calculation');
 
 let currInput = '';
 
-// listen for when any button is pressed
+// listen for numbers
 let input = nums.forEach(num => {
   num.addEventListener("click", function () {
 
