@@ -1,4 +1,4 @@
-// set all buttons as variable
+// set all numbers
 const nums = document.querySelectorAll('#num');
 
 // set calculation screen
@@ -23,4 +23,21 @@ let input = nums.forEach(num => {
 
 function operate() {
   
+}
+
+// operations
+function add(currInput, nextInput) {
+  return currInput + nextInput;
+}
+
+function subtract(currInput, nextInput) {
+  return currInput - nextInput;
+}
+
+function multiply(currInput, nextInput) {
+  return currInput * nextInput;
+}
+
+function divid(currInput, nextInput) {
+  return currInput / nextInput;
 }
