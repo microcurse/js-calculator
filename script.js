@@ -1,28 +1,44 @@
 // set all numbers
-const nums = document.querySelectorAll('#num');
+const buttons = document.querySelectorAll('button');
 
 // set calculation screen
 let calScreen = document.getElementById('calculation');
 
 let currInput = '';
+let nextInput = '';
 
 // listen for numbers
-let input = nums.forEach(num => {
-  num.addEventListener("click", function () {
+let input = buttons.forEach(button => {
+  button.addEventListener("click", function () {
+    
+    if ( this.value === 'clear' ) {
+      // clears all and sets to 0
+      currInput = 0;
+      calScreen.innerHTML = parseInt(currInput, 10);
+    } else {
 
-    let nextInput = '';
+      // collect user input
+      currInput += this.value;
 
-    // collect user input
-    currInput += this.value;
+      // output to screen
+      calScreen.innerHTML = currInput;
+    }
 
-    // output to screen
-    calScreen.innerHTML = currInput;
+    if ( currInput === '+' ) {
+      operate( '+', currInput, nextInput );
+    }
+
+    
+
+    
 
   });
 });
 
-function operate() {
-  
+function operate(operator, currInput, nextInput) {
+  if ( operator === '+' ) {
+    console.log(add(currInput, nextInput));
+  }
 }
 
 // operations
