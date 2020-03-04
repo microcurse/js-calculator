@@ -14,7 +14,6 @@ let calInput = buttons.forEach(button => {
 // this is where we take the input from the calculator and do something with it
 function collectInput(input) {
   switch (input) {
-
     // clear all current inputs
     case 'clear':
       console.log('You hit the Clear button');
