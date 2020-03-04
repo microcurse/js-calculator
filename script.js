@@ -5,45 +5,73 @@ const buttons = document.querySelectorAll('button');
 let calScreen = document.getElementById('calculation');
 
 let currInput = '';
-let nextInput = '';
+let firstNum  = '';
+let nextNum   = '';
+let operation = '';
 
 // listen for numbers
 let input = buttons.forEach(button => {
   button.addEventListener("click", function () {
-    
-    if ( this.value === 'clear' ) {
-      // clears all and sets to 0
-      currInput = 0;
-      calScreen.innerHTML = parseInt(currInput, 10);
-    } else {
 
-      // collect user input
-      currInput += this.value;
+    // collect user input
+    currInput += this.value;
 
-      // output to screen
-      calScreen.innerHTML = currInput;
+    // output to screen
+    calScreen.innerHTML = parseInt(currInput, 10);
+
+    // operators
+    switch (this.value) {
+        // clears all and sets to 0
+      case 'clear':
+        currInput = 0;
+        calScreen.innerHTML = currInput;
+        break;
+      case '+':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '+';
+        break;
+      case '-':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '-';
+        break;
+      case '*':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '*';
+        break;
+      case '/':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '/';
+        break;
+      case '=':
+        nextNum = parseInt(currInput, 10);
+        calScreen.innerHTML = operate(operation, firstNum, nextNum);
+        currInput = 0;
+        break;
     }
 
-    if ( currInput === '+' ) {
-      operate( '+', currInput, nextInput );
-    }
-
-    
-
-    
 
   });
 });
 
-function operate(operator, currInput, nextInput) {
-  if ( operator === '+' ) {
-    console.log(add(currInput, nextInput));
+function operate(operation, firstNum, nextNum) {
+  if ( operation === '+' ) {
+   return add( firstNum, nextNum );
+  } else if (operation === '-') {
+    return subtract(firstNum, nextNum);
+  } else if (operation === '*') {
+    return multiply(firstNum, nextNum);
+  } else if (operation === '/') {
+    return divide(firstNum, nextNum);
   }
 }
 
 // operations
-function add(currInput, nextInput) {
-  return currInput + nextInput;
+function add(firstNum, nextNum) {
+  return firstNum + nextNum;
 }
 
 function subtract(currInput, nextInput) {
@@ -54,6 +82,6 @@ function multiply(currInput, nextInput) {
   return currInput * nextInput;
 }
 
-function divid(currInput, nextInput) {
+function divide(currInput, nextInput) {
   return currInput / nextInput;
 }
