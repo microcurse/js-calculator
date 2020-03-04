@@ -10,15 +10,17 @@ let currInput = '';
 let input = buttons.forEach(button => {
   button.addEventListener("click", function () {
 
+    let nextInput = '';
+
     // collect user input
     currInput += this.value;
 
     // output to screen
     calScreen.innerHTML = currInput;
-    
+
   });
 });
 
 function operate() {
-
+  
 }
