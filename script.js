@@ -1,5 +1,5 @@
 // set all buttons as variable
-const buttons = document.querySelectorAll('button');
+const nums = document.querySelectorAll('#num');
 
 // set calculation screen
 let calScreen = document.getElementById('calculation');
@@ -7,8 +7,8 @@ let calScreen = document.getElementById('calculation');
 let currInput = '';
 
 // listen for when any button is pressed
-let input = buttons.forEach(button => {
-  button.addEventListener("click", function () {
+let input = nums.forEach(num => {
+  num.addEventListener("click", function () {
 
     let nextInput = '';
 
