@@ -1,53 +1,87 @@
 // set all numbers
-const numbers = document.querySelectorAll('#num');
-const operators = document.querySelectorAll('#operator');
+const buttons = document.querySelectorAll('button');
 
 // set calculation screen
 let calScreen = document.getElementById('calculation');
 
-let a = '';
-let currOp    = '';
+let currInput = '';
+let firstNum  = '';
+let nextNum   = '';
 let operation = '';
-let storedVal = [];
 
 // listen for numbers
-let inputNum = numbers.forEach(number => {
-  number.addEventListener("click", function () {
-    a += this.value;
-    console.log('number was pressed!');
-
-    calScreen.innerHTML = parseInt(a, 10);
-  });
-});
-
-// listen for operations
-let inputOp = operators.forEach(operator => {
-  operator.addEventListener("click", function () {
-
-    console.log('operator was pressed!');
+let input = buttons.forEach(button => {
+  button.addEventListener("click", function () {
 
     // collect user input
-    currOp += this.value;
+    currInput += this.value;
 
     // output to screen
-    calScreen.innerHTML = parseInt(a, 10);
+    calScreen.innerHTML = parseInt(currInput, 10);
+
+    // operators
+    switch (this.value) {
+        // clears all and sets to 0
+      case 'clear':
+        currInput = 0;
+        calScreen.innerHTML = currInput;
+        break;
+      case '+':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '+';
+        break;
+      case '-':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '-';
+        break;
+      case '*':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '*';
+        break;
+      case '/':
+        firstNum  = parseInt(currInput, 10);
+        currInput = 0;
+        operation = '/';
+        break;
+      case '=':
+        nextNum = parseInt(currInput, 10);
+        calScreen.innerHTML = operate(operation, firstNum, nextNum);
+        currInput = 0;
+        break;
+    }
+
 
   });
 });
 
-// math stuff
-function add(a, b) {
-  return a + b;
+function operate(operation, firstNum, nextNum) {
+  if ( operation === '+' ) {
+   return add( firstNum, nextNum );
+  } else if (operation === '-') {
+    return subtract(firstNum, nextNum);
+  } else if (operation === '*') {
+    return multiply(firstNum, nextNum);
+  } else if (operation === '/') {
+    return divide(firstNum, nextNum);
+  }
 }
 
-function subtract(a, b) {
-  return a - b;
+// operations
+function add(firstNum, nextNum) {
+  return firstNum + nextNum;
 }
 
-function multiply(a, b) {
-  return a * b;
+function subtract(currInput, nextInput) {
+  return currInput - nextInput;
 }
 
-function divide(a, b) {
-  return a / b;
+function multiply(currInput, nextInput) {
+  return currInput * nextInput;
+}
+
+function divide(currInput, nextInput) {
+  return currInput / nextInput;
 }
