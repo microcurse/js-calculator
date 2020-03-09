@@ -22,6 +22,7 @@ html {
 
 .calculator-screen {
   display: grid;
+  color: #fff;
   background: #efefef;
   grid-column: 1 / 3;
   background: #333;
