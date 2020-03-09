@@ -16,7 +16,7 @@ let input = buttons.forEach(button => {
     // collect user input
     currInput += this.value;
 
-    // output to screen
+    // output current number to screen
     calScreen.innerHTML = parseInt(currInput, 10);
 
     // operators
@@ -24,6 +24,8 @@ let input = buttons.forEach(button => {
         // clears all and sets to 0
       case 'clear':
         currInput = 0;
+        firstNum  = '';
+        nextNum   = '';
         calScreen.innerHTML = currInput;
         break;
       case '+':
