@@ -1,8 +1,5 @@
-// set all numbers
-const buttons = document.querySelectorAll('button');
-
 // set calculation screen
-let calScreen = document.getElementById('calculation');
+let calScreen = document.querySelector('.calculator-screen');
 
 let currInput = '';
 let firstNum  = '';
@@ -10,9 +7,9 @@ let nextNum   = '';
 let operation = '';
 let solution  = '';
 
-// listen for numbers
-let input = buttons.forEach(button => {
-  button.addEventListener("click", function () {
+// listen for key presses with event delegation
+const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
 
     // collect user input
     currInput += this.value;
@@ -65,7 +62,6 @@ let input = buttons.forEach(button => {
 
 
   });
-});
 
 function operate(operation, a, b) {
 
