@@ -20,6 +20,12 @@ html {
   grid-template-rows: 120px 400px;
 }
 
+.calculator-keys {
+  display: grid;
+  grid-template-columns: 1fr 25%;
+  width: 480px;
+}
+
 .calculator-screen {
   display: grid;
   color: #fff;
