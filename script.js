@@ -8,6 +8,7 @@ let currInput = '';
 let firstNum  = '';
 let nextNum   = '';
 let operation = '';
+let solution  = '';
 
 // listen for numbers
 let input = buttons.forEach(button => {
@@ -29,9 +30,15 @@ let input = buttons.forEach(button => {
         calScreen.innerHTML = currInput;
         break;
       case '+':
-        firstNum  = parseInt(currInput, 10);
-        currInput = 0;
         operation = '+';
+        firstNum  = parseInt(currInput, 10);
+
+        if (firstNum > 0) {
+          nextNum = parseInt(currInput, 10);
+          firstNum = operate(operation, firstNum, nextNum);
+        }
+        
+        currInput = 0;
         break;
       case '-':
         firstNum  = parseInt(currInput, 10);
@@ -50,7 +57,8 @@ let input = buttons.forEach(button => {
         break;
       case '=':
         nextNum = parseInt(currInput, 10);
-        calScreen.innerHTML = operate(operation, firstNum, nextNum);
+        solution = operate(operation, firstNum, nextNum);
+        calScreen.innerHTML = solution;
         currInput = 0;
         break;
     }
@@ -59,31 +67,34 @@ let input = buttons.forEach(button => {
   });
 });
 
-function operate(operation, firstNum, nextNum) {
-  if ( operation === '+' ) {
-   return add( firstNum, nextNum );
-  } else if (operation === '-') {
-    return subtract(firstNum, nextNum);
-  } else if (operation === '*') {
-    return multiply(firstNum, nextNum);
-  } else if (operation === '/') {
-    return divide(firstNum, nextNum);
+function operate(operation, a, b) {
+
+  switch(operation) {
+    case '+':
+      return add( a, b );
+    case '-':
+      return subtract( a, b );
+    case '*':
+      return multiply( a, b );
+    case '/':
+      return divide( a, b );
   }
+
 }
 
 // operations
-function add(firstNum, nextNum) {
-  return firstNum + nextNum;
+function add(a, b) {
+  return a + b;
 }
 
-function subtract(currInput, nextInput) {
-  return currInput - nextInput;
+function subtract(a , b) {
+  return a - b;
 }
 
-function multiply(currInput, nextInput) {
-  return currInput * nextInput;
+function multiply(a , b) {
+  return a * b;
 }
 
-function divide(currInput, nextInput) {
-  return currInput / nextInput;
+function divide(a , b) {
+  return a / b;
 }
