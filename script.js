@@ -1,21 +1,22 @@
 // set calculation screen
-let calScreen = document.querySelector('.calculator-screen');
+const calculatorScreen = document.querySelector('.calculator-screen').value;
 
-let currInput = '';
-let firstNum  = '';
-let nextNum   = '';
-let operation = '';
-let solution  = '';
+const calculator = {
+  displayValue: 0,
+  firstNumber: null,
+  operator: null,
+  waitingForNextNumber: false
+}
 
 // listen for key presses with event delegation
 const keys = document.querySelector('.calculator-keys');
 keys.addEventListener('click', (event) => {
-
+  
     // collect user input
-    currInput += this.value;
+    currInput += event;
 
     // output current number to screen
-    calScreen.innerHTML = parseInt(currInput, 10);
+    displayValue = parseFloat(currInput);
 
     // operators
     switch (this.value) {
