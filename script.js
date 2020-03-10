@@ -1,5 +1,5 @@
 const calculator = {
-  displayValue: 0,
+  displayValue: '0',
   firstNumber: null,
   operator: null,
   waitingForNextNumber: false
@@ -19,18 +19,20 @@ keys.addEventListener('click', (event) => {
   // this lets us set up the current clicked key as a destructured object
   const { target } = event;
   
-  // TODO: need to catch when numbers, operators, equals, and decimals are pressed
+  // TODO: need to catch when numbers, operators, equals, decimals, and clear are pressed
+  if(target.classList.contains('number')) {
+
+    console.log(target.value);
+    updateDisplay();
+  }
   
-  
-  // update display value
-  calculator.displayValue = target.value;
-  
-  // run function to update the calc screen
-  updateDisplay();
-  
-  console.log(target.value);
 
 });
+
+//TODO: need to create a numbers input function to handle what happens when numbers are input.
+function inputNumber(number) {
+
+}
 
 function operate(operation, a, b) {
 
