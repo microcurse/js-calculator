@@ -11,58 +11,16 @@ const calculator = {
 // listen for key presses with event delegation
 const keys = document.querySelector('.calculator-keys');
 keys.addEventListener('click', (event) => {
+
+  // this lets us set up the current clicked key as a destructured object
+  const { target } = event;
   
-    // collect user input
-    currInput += event;
+  console.log(target.value);
 
-    // output current number to screen
-    displayValue = parseFloat(currInput);
+  // output current number to screen
+  calculator.displayValue = parseFloat(target.value);
 
-    // operators
-    switch (this.value) {
-        // clears all and sets to 0
-      case 'clear':
-        currInput = 0;
-        firstNum  = '';
-        nextNum   = '';
-        calScreen.innerHTML = currInput;
-        break;
-      case '+':
-        operation = '+';
-        firstNum  = parseInt(currInput, 10);
-
-        if (firstNum > 0) {
-          nextNum = parseInt(currInput, 10);
-          firstNum = operate(operation, firstNum, nextNum);
-        }
-        
-        currInput = 0;
-        break;
-      case '-':
-        firstNum  = parseInt(currInput, 10);
-        currInput = 0;
-        operation = '-';
-        break;
-      case '*':
-        firstNum  = parseInt(currInput, 10);
-        currInput = 0;
-        operation = '*';
-        break;
-      case '/':
-        firstNum  = parseInt(currInput, 10);
-        currInput = 0;
-        operation = '/';
-        break;
-      case '=':
-        nextNum = parseInt(currInput, 10);
-        solution = operate(operation, firstNum, nextNum);
-        calScreen.innerHTML = solution;
-        currInput = 0;
-        break;
-    }
-
-
-  });
+});
 
 function operate(operation, a, b) {
 
@@ -79,7 +37,7 @@ function operate(operation, a, b) {
 
 }
 
-// operations
+// math operations
 function add(a, b) {
   return a + b;
 }
