@@ -21,17 +21,16 @@ keys.addEventListener('click', (event) => {
   
   // TODO: need to catch when numbers, operators, equals, decimals, and clear are pressed
   if(target.classList.contains('number')) {
-
-    console.log(target.value);
+    inputNumber(target.value);
     updateDisplay();
   }
-  
 
 });
 
 //TODO: need to create a numbers input function to handle what happens when numbers are input.
 function inputNumber(number) {
-
+  const { displayValue } = calculator;
+  calculator.displayValue = displayValue === '0' ? number : displayValue + number;
 }
 
 function operate(operation, a, b) {
