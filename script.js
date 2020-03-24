@@ -53,6 +53,8 @@ function inputNumber(number) {
 }
 
 function inputDecimal(dot) {
+  if (calculator.waitingForNextNumber === true) return;
+  
   if( !calculator.displayValue.includes(dot)) {
     calculator.displayValue += dot;
   }
