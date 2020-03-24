@@ -75,20 +75,3 @@ const performCalculation = {
   '*': (firstNumber, nextNumber) => firstNumber * nextNumber,
   '=': (firstNumber, nextNumber) => nextNumber
 }
-
-// math operations
-function add(a, b) {
-  return a + b;
-}
-
-function subtract(a , b) {
-  return a - b;
-}
-
-function multiply(a , b) {
-  return a * b;
-}
-
-function divide(a , b) {
-  return a / b;
-}
