@@ -20,12 +20,12 @@ keys.addEventListener('click', (event) => {
   const { target } = event;
   
   // TODO: need to catch when numbers, operators, equals, decimals, and clear are pressed
-  if(target.classList.contains('number')) {
+  if( target.classList.contains('number' )) {
     inputNumber(target.value);
     updateDisplay();
   }
 
-  if(target.classList.contains('operator')) {
+  if( target.classList.contains('operator' )) {
     handleOperator(target.value);
     updateDisplay();
   }
@@ -34,8 +34,14 @@ keys.addEventListener('click', (event) => {
 
 // checks if theres a value in the screen, if there isn't, then just append the next number
 function inputNumber(number) {
-  const { displayValue } = calculator;
-  calculator.displayValue = displayValue === '0' ? number : displayValue + number;
+  const { displayValue, waitingForNextNumber } = calculator;
+  
+  if( waitingForNextNumber === true ) {
+    calculator.displayValue = number;
+    calculator.waitingForNextNumber = false;
+  } else {
+    calculator.displayValue = displayValue === '0' ? number : displayValue + number;
+  }
 
   // checks the current status of the calculator when a button is pressed
   console.log(calculator);
