@@ -35,7 +35,7 @@ keys.addEventListener('click', (event) => {
 // checks if theres a value in the screen, if there isn't, then just append the next number
 function inputNumber(number) {
   const { displayValue, waitingForNextNumber } = calculator;
-  
+
   if( waitingForNextNumber === true ) {
     calculator.displayValue = number;
     calculator.waitingForNextNumber = false;
@@ -53,6 +53,11 @@ function handleOperator(nextOperator) {
 
   if( firstNumber === null ) {
     calculator.firstNumber = inputValue;
+  } else  if ( operator ) {
+    const result = performCalculation[operator](firstNumber, inputValue);
+
+    calculator.displayValue = String(result);
+    calculator.firstNumber = result;
   }
 
   calculator.waitingForNextNumber = true;
@@ -62,19 +67,13 @@ function handleOperator(nextOperator) {
   console.log(calculator);
 }
 
-function operate(operation, a, b) {
-
-  switch(operation) {
-    case '+':
-      return add( a, b );
-    case '-':
-      return subtract( a, b );
-    case '*':
-      return multiply( a, b );
-    case '/':
-      return divide( a, b );
-  }
-
+// calculation object
+const performCalculation = {
+  '/': (firstNumber, nextNumber) => firstNumber / nextNumber,
+  '+': (firstNumber, nextNumber) => firstNumber + nextNumber,
+  '-': (firstNumber, nextNumber) => firstNumber - nextNumber,
+  '*': (firstNumber, nextNumber) => firstNumber * nextNumber,
+  '=': (firstNumber, nextNumber) => nextNumber
 }
 
 // math operations
