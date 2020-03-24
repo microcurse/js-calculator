@@ -35,6 +35,11 @@ keys.addEventListener('click', (event) => {
     updateDisplay();
   }
 
+  if( target.classList.contains('clear')) {
+    resetCalculator();
+    updateDisplay();
+  }
+
 });
 
 // checks if theres a value in the screen, if there isn't, then just append the next number
@@ -54,7 +59,7 @@ function inputNumber(number) {
 
 function inputDecimal(dot) {
   if (calculator.waitingForNextNumber === true) return;
-  
+
   if( !calculator.displayValue.includes(dot)) {
     calculator.displayValue += dot;
   }
@@ -87,4 +92,13 @@ const performCalculation = {
   '-': (firstNumber, nextNumber) => firstNumber - nextNumber,
   '*': (firstNumber, nextNumber) => firstNumber * nextNumber,
   '=': (firstNumber, nextNumber) => nextNumber
+}
+
+// all clear
+function resetCalculator() {
+  calculator.displayValue = '0';
+  calculator.firstNumber  = null;
+  calculator.waitingForNextNumber = false;
+  calculator.operator = null;
+  console.log(calculator);
 }
