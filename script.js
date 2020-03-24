@@ -27,7 +27,7 @@ keys.addEventListener('click', (event) => {
 
 });
 
-//TODO: need to create a numbers input function to handle what happens when numbers are input.
+// checks if theres a value in the screen, if there isn't, then just append the next number
 function inputNumber(number) {
   const { displayValue } = calculator;
   calculator.displayValue = displayValue === '0' ? number : displayValue + number;
