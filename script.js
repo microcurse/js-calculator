@@ -25,6 +25,11 @@ keys.addEventListener('click', (event) => {
     updateDisplay();
   }
 
+  if( target.classList.contains('decimal')) {
+    inputDecimal(target.value);
+    updateDisplay();
+  }
+
   if( target.classList.contains('operator' )) {
     handleOperator(target.value);
     updateDisplay();
@@ -45,6 +50,12 @@ function inputNumber(number) {
 
   // checks the current status of the calculator when a button is pressed
   console.log(calculator);
+}
+
+function inputDecimal(dot) {
+  if( !calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
+  }
 }
 
 function handleOperator(nextOperator) {
