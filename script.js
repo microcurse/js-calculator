@@ -25,12 +25,35 @@ keys.addEventListener('click', (event) => {
     updateDisplay();
   }
 
+  if(target.classList.contains('operator')) {
+    handleOperator(target.value);
+    updateDisplay();
+  }
+
 });
 
 // checks if theres a value in the screen, if there isn't, then just append the next number
 function inputNumber(number) {
   const { displayValue } = calculator;
   calculator.displayValue = displayValue === '0' ? number : displayValue + number;
+
+  // checks the current status of the calculator when a button is pressed
+  console.log(calculator);
+}
+
+function handleOperator(nextOperator) {
+  const {firstNumber, displayValue, operator } = calculator;
+  const inputValue = parseFloat(displayValue);
+
+  if( firstNumber === null ) {
+    calculator.firstNumber = inputValue;
+  }
+
+  calculator.waitingForNextNumber = true;
+  calculator.operator = nextOperator;
+
+  // checks the current status of the calculator when a button is pressed
+  console.log(calculator);
 }
 
 function operate(operation, a, b) {
